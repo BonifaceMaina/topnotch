@@ -603,8 +603,8 @@
 		
 												<div class="lqd-column col-md-12 text-md-center">
 
-							<p class="my-0 font-size-15 text-fade-white-08">© Top-notch Shades Solutions, 2021.</p>
-						</div><!-- /.col-md-6 text-md-right -->
+													<p class="my-0 font-size-15 text-fade-white-08">© Top-notch Shades Solutions, <span id="copyright"></span>. </p>
+												</div><!-- /.col-md-6 text-md-right -->
 		
 					</div><!-- /.row -->
 				</div><!-- /.container -->
@@ -614,7 +614,9 @@
 		
 	</div><!-- /#wrap -->
 
-
+	<script>
+		document.getElementById("copyright").innerHTML = new Date().getFullYear();
+	</script>
 	<script src="assets/vendors/jquery.min.js"></script>
 	<script src="assets/js/theme-vendors.js"></script>
 	<script src="assets/js/theme.min.js"></script>
