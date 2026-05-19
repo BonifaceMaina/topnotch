@@ -23,7 +23,192 @@
 	
 	<!-- Head Libs -->
 	<script async src="assets/vendors/modernizr.min.js"></script>
-	
+
+	<style>
+		/* ── OUR WORK SECTION ── */
+		#our-work {
+			padding: 80px 0;
+			background: #f8f8f8;
+		}
+		#our-work .ow-header {
+			text-align: center;
+			margin-bottom: 48px;
+		}
+		#our-work .ow-eyebrow {
+			font-family: 'Raleway', sans-serif;
+			font-size: 11px;
+			font-weight: 700;
+			letter-spacing: 0.18em;
+			text-transform: uppercase;
+			color: #3ed2a7;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 12px;
+			margin-bottom: 12px;
+		}
+		#our-work .ow-eyebrow::before,
+		#our-work .ow-eyebrow::after {
+			content: '';
+			width: 40px;
+			height: 1px;
+			background: #3ed2a7;
+		}
+		#our-work .ow-title {
+			font-family: 'Raleway', sans-serif;
+			font-size: 36px;
+			font-weight: 900;
+			color: #1a1a1a;
+			margin-bottom: 14px;
+		}
+		#our-work .ow-subtitle {
+			font-family: 'Lato', sans-serif;
+			font-size: 16px;
+			color: #777;
+			max-width: 520px;
+			margin: 0 auto;
+			line-height: 1.75;
+		}
+
+		/* Filter buttons */
+		.ow-filters {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin-bottom: 48px;
+		}
+		.ow-filter-btn {
+			font-family: 'Raleway', sans-serif;
+			font-size: 11px;
+			font-weight: 700;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			padding: 9px 22px;
+			border-radius: 100px;
+			border: 2px solid #ddd;
+			background: #fff;
+			color: #888;
+			cursor: pointer;
+			transition: all 0.22s ease;
+		}
+		.ow-filter-btn:hover {
+			border-color: #3ed2a7;
+			color: #3ed2a7;
+		}
+		.ow-filter-btn.active {
+			background: #3ed2a7;
+			border-color: #3ed2a7;
+			color: #fff;
+		}
+
+		/* Masonry grid */
+		.ow-grid {
+			columns: 3;
+			column-gap: 14px;
+			padding: 0 30px;
+		}
+		@media (max-width: 991px) { .ow-grid { columns: 2; } }
+		@media (max-width: 575px) { .ow-grid { columns: 1; } }
+
+		.ow-item {
+			break-inside: avoid;
+			margin-bottom: 14px;
+			position: relative;
+			overflow: hidden;
+			border-radius: 3px;
+			cursor: pointer;
+			display: block;
+		}
+		.ow-item img {
+			width: 100%;
+			display: block;
+			transition: transform 0.45s ease;
+		}
+		.ow-item:hover img {
+			transform: scale(1.06);
+		}
+		.ow-item-overlay {
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(170deg, transparent 35%, rgba(14, 14, 14, 0.82));
+			opacity: 0;
+			transition: opacity 0.3s ease;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			padding: 22px 20px;
+		}
+		.ow-item:hover .ow-item-overlay {
+			opacity: 1;
+		}
+		.ow-item-overlay .ow-tag {
+			font-family: 'Raleway', sans-serif;
+			font-size: 10px;
+			font-weight: 700;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			color: #3ed2a7;
+			margin-bottom: 5px;
+		}
+		.ow-item-overlay .ow-caption {
+			font-family: 'Raleway', sans-serif;
+			font-size: 17px;
+			font-weight: 700;
+			color: #fff;
+			line-height: 1.3;
+		}
+
+		/* Lightbox */
+		#ow-lightbox {
+			display: none;
+			position: fixed;
+			inset: 0;
+			background: rgba(0,0,0,0.93);
+			z-index: 9999;
+			align-items: center;
+			justify-content: center;
+			padding: 40px;
+		}
+		#ow-lightbox.open { display: flex; }
+		#ow-lightbox img {
+			max-width: 88vw;
+			max-height: 84vh;
+			object-fit: contain;
+			border-radius: 2px;
+			display: block;
+		}
+		#ow-lb-close {
+			position: absolute;
+			top: 22px; right: 28px;
+			background: none;
+			border: none;
+			color: #fff;
+			font-size: 30px;
+			cursor: pointer;
+			opacity: 0.7;
+			line-height: 1;
+		}
+		#ow-lb-close:hover { opacity: 1; }
+		#ow-lb-info {
+			position: absolute;
+			bottom: 28px;
+			left: 50%;
+			transform: translateX(-50%);
+			font-family: 'Raleway', sans-serif;
+			font-size: 12px;
+			letter-spacing: 0.1em;
+			color: #aaa;
+			text-align: center;
+			white-space: nowrap;
+		}
+		/* Placeholder bg for missing images */
+		.ow-img-ph {
+			width: 100%;
+			display: block;
+			background: #c4ddd3;
+		}
+	</style>
 	
 </head>
 <body data-mobile-nav-trigger-alignment="right" data-mobile-nav-align="left" data-mobile-nav-style="classic" data-mobile-nav-shceme="gray" data-mobile-header-scheme="gray" data-mobile-nav-breakpoint="1199">
@@ -41,65 +226,55 @@
 							<div class="col-auto">
 								
 								<div class="header-module">
-									
 									<div class="iconbox iconbox-inline iconbox-xs">
 										<div class="iconbox-icon-wrap">
 											<span class="iconbox-icon-container">
 												<i class="icon-ion-ios-call"></i>
 											</span>
-										</div><!-- /.iconbox-icon-wrap -->
+										</div>
 										<h3 class="font-size-14">Phone: 0729 152 119/ 0723 555 804</h3>
-									</div><!-- /.iconbox -->
-									
-								</div><!-- /.header-module -->
+									</div>
+								</div>
 								
 								<div class="header-module">
-									
 									<div class="iconbox iconbox-inline iconbox-xs">
 										<div class="iconbox-icon-wrap">
 											<span class="iconbox-icon-container">
 												<i class="icon-md-mail"></i>
 											</span>
-										</div><!-- /.iconbox-icon-wrap -->
-										<h3 class="font-size-14">Mail: info@topnotchsolutions.co.ke</h3>
-									</div><!-- /.iconbox -->
-									
-								</div><!-- /.header-module -->
+										</div>
+										<h3 class="font-size-14">Mail: info@topnotchshades.co.ke</h3>
+									</div>
+								</div>
 								
 								<div class="header-module">
-									
 									<div class="iconbox iconbox-inline iconbox-xs">
 										<div class="iconbox-icon-wrap">
 											<span class="iconbox-icon-container">
 												<i class="icon-md-clock-o"></i>
 											</span>
-										</div><!-- /.iconbox-icon-wrap -->
+										</div>
 										<h3 class="font-size-14">Hours: Mon-Sat 8am - 7pm</h3>
-									</div><!-- /.iconbox -->
-									
-								</div><!-- /.header-module -->						
+									</div>
+								</div>
 								
-							</div><!-- /.col -->
+							</div>
 							
 							<div class="col text-right">
-								
 								<div class="header-module">
-									
 									<ul class="social-icon social-icon-md">
 										<li><a href="https://www.facebook.com/pages/category/Product-Service/Top-Notch-Shades-Solutions-Ltd-2219024035046666/" target="_blank"><i class="fa fa-facebook"></i></a></li>
 										<li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
 										<li><a href="#" target="_blank"><i class="fa fa-pinterest"></i></a></li>
 									</ul>
-									
-								</div><!-- /.header-module -->
-								
-							</div><!-- /.col -->
+								</div>
+							</div>
 							
-						</div><!-- /.secondarybar-row -->
-					</div><!-- /.secondarybar -->
-				</div><!-- /.secondarybar-container -->
+						</div>
+					</div>
+				</div>
 				
-			</div><!-- /.secondarybar-wrap -->
+			</div>
 			
 			<div class="mainbar-wrap">
 				
@@ -111,7 +286,7 @@
 								<div class="navbar-header">
 									<a class="navbar-brand" style="margin:0 !important;padding: 0px !important;" href="index.html" rel="home">
 										<span class="navbar-brand-inner">
-											<img class="logo-default" src="assets/img/logo/logo-removebg-preview.png" alt="Olitt HTML Template">
+											<img class="logo-default" src="assets/img/logo/logo-removebg-preview.png" alt="Top-notch Shades Solutions">
 										</span>
 									</a>
 									<button type="button" class="navbar-toggle collapsed nav-trigger style-mobile" data-toggle="collapse" data-target="#main-header-collapse" aria-expanded="false" data-changeclassnames='{ "html": "mobile-nav-activated overflow-hidden" }'>
@@ -122,326 +297,385 @@
 											<span class="bar"></span>
 										</span>
 									</button>
-								</div><!-- /.navbar-header -->
-							</div><!-- /.col -->
+								</div>
+							</div>
 							
 							<div class="col text-right">
-								
 								<div class="collapse navbar-collapse" id="main-header-collapse" aria-expanded="false" role="tablist">
-									
 									<ul id="primary-nav" class="main-nav ld_header_menu_5c51ac47950e6 nav align-items-lg-stretch justify-content-lg-end" data-submenu-options='{ "toggleType": "fade", "handler": "mouse-in-out" }'>
 										<li>
 											<a href="index.html" data-toggle="collapse" data-target="#main-header-collapse">
 												<span class="link-icon"></span>
-												<span class="link-txt">
-													<span class="link-ext"></span>
-													<span class="txt">Home</span>
-												</span>
+												<span class="link-txt"><span class="link-ext"></span><span class="txt">Home</span></span>
 											</a>
 										</li>
-
 										<li>
 											<a href="#" data-toggle="collapse" data-target="#main-header-collapse">
 												<span class="link-icon"></span>
-												<span class="link-txt">
-													<span class="link-ext"></span>
-													<span class="txt">About</span>
-												</span>
+												<span class="link-txt"><span class="link-ext"></span><span class="txt">About</span></span>
 											</a>
 										</li>
-										
 										<li>
 											<a href="services.html" data-toggle="collapse" data-target="#main-header-collapse">
 												<span class="link-icon"></span>
-												<span class="link-txt">
-													<span class="link-ext"></span>
-													<span class="txt">Services</span>
-												</span>
+												<span class="link-txt"><span class="link-ext"></span><span class="txt">Services</span></span>
 											</a>
 										</li>
-
 										<li>
 											<a href="portfolio.html" data-toggle="collapse" data-target="#main-header-collapse">
 												<span class="link-icon"></span>
-												<span class="link-txt">
-													<span class="link-ext"></span>
-													<span class="txt">Portfolio</span>
-												</span>
+												<span class="link-txt"><span class="link-ext"></span><span class="txt">Portfolio</span></span>
 											</a>
-										</li>																	
-										
-										
+										</li>
 										<li>
 											<a href="contact.html" data-toggle="collapse" data-target="#main-header-collapse">
 												<span class="link-icon"></span>
-												<span class="link-txt">
-													<span class="link-ext"></span>
-													<span class="txt">Contact</span>
-												</span>
+												<span class="link-txt"><span class="link-ext"></span><span class="txt">Contact</span></span>
 											</a>
 										</li>
 									</ul>
-									
-								</div><!-- /.collapse -->						
-															
-							</div><!-- /.col -->
+								</div>
+							</div>
 							
-						</div><!-- /.maonbar-row -->
-					</div><!-- /.mainbar -->
-				</div><!-- /.mainbar-container -->
+						</div>
+					</div>
+				</div>
 				
-			</div><!-- /.mainbar-wrap -->
+			</div>
 			
 		</header>
 
 		<main id="content" class="content">
 
+			<!-- ═══════════════════════════════════════════════ -->
+			<!-- ── OUR WORK — new portfolio section ── -->
+			<!-- ═══════════════════════════════════════════════ -->
+			<section id="our-work">
+				<div class="container">
 
-			<section class="vc_row bg-light" id="about">
-				<div class="container-fluid px-0">
-					<div class="row mx-0 d-md-flex flex-wrap align-items-stretch">				
+					<!-- <div class="ow-header">
+						<p class="ow-eyebrow">Our Work</p>
+						<p class="ow-subtitle">A showcase of projects across digital printing, offset printing, vehicle branding and office branding.</p>
+					</div> -->
 
-						<div class="lqd-column col-lg-12 col-xs-12 pt-7 pb-4 pb-lg-7 d-md-flex flex-wrap align-content-center">
+					<div class="ow-filters">
+						<button class="ow-filter-btn active" onclick="owFilter('all', this)">All</button>
+						<button class="ow-filter-btn" onclick="owFilter('digital', this)">Digital Printing</button>
+						<button class="ow-filter-btn" onclick="owFilter('offset', this)">Offset Printing</button>
+						<button class="ow-filter-btn" onclick="owFilter('vehicle', this)">Vehicle Branding</button>
+						<button class="ow-filter-btn" onclick="owFilter('office', this)">Office Branding</button>
+						<button class="ow-filter-btn" onclick="owFilter('merch', this)">Branded Merchandise</button>
+					</div>
 
-							<!-- digital printing -->
-							<div class="row">
-								<div class="col-md-4 col-md-offset-1" data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":"1200","delay":"120","easing":"easeOutQuint","direction":"forward","initValues":{"translateY":30,"opacity":0},"animations":{"translateY":0,"opacity":1}}'>
+					<div class="ow-grid" id="owGrid">
 
-									<header class="fancy-title">
-										<h5 class="font-size-12 text-uppercase ltr-sp-1 text-primary">Digital Printing</h5>
-										<i class="line w-5 circle border-color-primary"></i>
-									</header>
-		
-									<p class="font-size-18 lh-185">
-										We provide fast and efficient digital printing services in Nairobi and all other counties in Kenya covering mainly brochures, books, magazines, wedding invitations, Christmas cards, menus, sales kits, company reports, corporate stationery, fliers and calendars, among others. 
-									</p>
+						<!-- Digital — real client work (uploaded) -->
+						<div class="ow-item" data-cat="digital" onclick="owLightbox(this)">
+							<img src="./assets/images/banners.jpeg" alt="Aqua Hub-KE teardrop banner" style="min-height:220px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Digital Printing</div><div class="ow-caption">Aqua Hub-KE Teardrop Banner</div></div>
+						</div>
 
-								</div><!-- /.col-md-5 col-md-offset-1 -->
+						<div class="ow-item" data-cat="digital" onclick="owLightbox(this)">
+							<img src="./assets/images/banners1.jpeg" alt="National Defence College rollup banners" style="min-height:260px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Digital Printing</div><div class="ow-caption">National Defence College Roll-up Banners</div></div>
+						</div>
 
-								<div class="col-md-6 col-md-offset-1">
-									<section
-									style="height: 350px; width: 100%;"
-									class="p-5 bg-cover"
-									data-slideshow-bg="true"
-									data-slideshow-options='{"delay":2500,"imageArray":
-									["./assets/img/digital/2.jpg","./assets/img/digital/5.jpg","./assets/img/digital/7.jpg",
-									"./assets/img/digital/8.jpg","./assets/img/digital/3.jpg","./assets/img/digital/7.jpg",
-									"./assets/img/digital/4.jpg","./assets/img/digital/9.jpg","./assets/img/digital/10.jpg",
-									"./assets/img/digital/12.jpg","./assets/img/digital/13.jpg"]}'>
-									<div class="container h-5">											
-									</div><!-- /.container -->
-								</section>
+						<div class="ow-item" data-cat="digital" onclick="owLightbox(this)">
+							<img src="./assets/images/banners2.jpeg" alt="Aqua Hub-KE exhibition banners" style="min-height:240px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Digital Printing</div><div class="ow-caption">Aqua Hub-KE Exhibition Banners</div></div>
+						</div>
 
-								</div><!-- /.col-md-5 col-md-offset-1 -->
-							</div><!-- /.row -->
-							<!-- /digital printing -->
+						<div class="ow-item" data-cat="digital" onclick="owLightbox(this)">
+							<img src="./assets/images/banners5.jpeg" alt="Rotary Club of Limuru rollup banners" style="min-height:230px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Digital Printing</div><div class="ow-caption">Rotary Club of Limuru Banners</div></div>
+						</div>
 
-							<!-- offset printing -->
-							<div class="row">
+						<div class="ow-item" data-cat="digital" onclick="owLightbox(this)">
+							<img src="./assets/images/notebooks1.jpeg" alt="Dr Scent branded notebooks" style="min-height:220px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Digital Printing</div><div class="ow-caption">Dr Scent Branded Notebooks</div></div>
+						</div>
 
-								<div class="col-md-6 col-md-offset-1 pt-lg-6 pb-lg-5">
-									<section
-									style="height: 350px; width: 100%;"
-									class="p-5 bg-cover"
-									data-slideshow-bg="true"
-									data-slideshow-options='{"delay":2500,"imageArray":
-									["./assets/img/offset/2.jpg","./assets/img/offset/5.jpg","./assets/img/offset/7.jpg",
-									"./assets/img/offset/8.jpg","./assets/img/offset/3.jpg","./assets/img/offset/7.jpg",
-									"./assets/img/offset/4.jpg","./assets/img/offset/9.jpg","./assets/img/offset/10.jpg",
-									"./assets/img/offset/14.jpeg","./assets/img/offset/15.jpeg","./assets/img/offset/16.jpeg",
-									"./assets/img/offset/17.jpeg"]}'>
-									<div class="container h-5">											
-									</div><!-- /.container -->
-								</section>
+						<!-- Digital — placeholder items -->
+						<div class="ow-item" data-cat="digital" onclick="owLightbox(this)">
+							<img src="./assets/img/digital/2.jpg" alt="Digital print" style="min-height:180px; background:#c4ddd3;" onerror="this.style.minHeight='200px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Digital Printing</div><div class="ow-caption">Brochure Design</div></div>
+						</div>
 
-								</div><!-- /.col-md-5 col-md-offset-1 -->
+						<div class="ow-item" data-cat="vehicle" onclick="owLightbox(this)">
+							<img src="./assets/img/cars/3.jpg" alt="Vehicle wrap" style="min-height:240px; background:#b8d4c8;" onerror="this.style.minHeight='260px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Vehicle Branding</div><div class="ow-caption">Fleet Wrap</div></div>
+						</div>
 
-								<div class="col-md-4 col-md-offset-1 pt-lg-6 pb-lg-5" data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":"1200","delay":"120","easing":"easeOutQuint","direction":"forward","initValues":{"translateY":30,"opacity":0},"animations":{"translateY":0,"opacity":1}}'>
+						<div class="ow-item" data-cat="office" onclick="owLightbox(this)">
+							<img src="./assets/img/office/1.jpg" alt="Office branding" style="min-height:200px; background:#aecfbf;" onerror="this.style.minHeight='220px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Office Branding</div><div class="ow-caption">Reception Wall</div></div>
+						</div>
 
-									<header class="fancy-title">
-										<h5 class="font-size-12 text-uppercase ltr-sp-1 text-primary">Offset Printing</h5>
-										<i class="line w-5 circle border-color-primary"></i>
-									</header>
-		
-									<p class="font-size-18 lh-185">
-										Our years of experience in offset printing combined with the expertise of our printing, packaging and branding techniques sets us a cut above the rest. By offering digital printing and offset printing in one place, the client can benefit from the choice of the most cost effective printing method and need based solutions. 
-									</p>
+						<div class="ow-item" data-cat="offset" onclick="owLightbox(this)">
+							<img src="./assets/img/offset/2.jpg" alt="Offset printing" style="min-height:180px; background:#c2d8cc;" onerror="this.style.minHeight='200px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Offset Printing</div><div class="ow-caption">Corporate Magazine</div></div>
+						</div>
 
-								</div><!-- /.col-md-5 col-md-offset-1 -->
+						<div class="ow-item" data-cat="digital" onclick="owLightbox(this)">
+							<img src="./assets/img/digital/5.jpg" alt="Digital print" style="min-height:250px; background:#d0e5dc;" onerror="this.style.minHeight='270px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Digital Printing</div><div class="ow-caption">Brochures</div></div>
+						</div>
 
-								
-							</div><!-- /.row -->
-							<!-- /offset printing -->
+						<div class="ow-item" data-cat="vehicle" onclick="owLightbox(this)">
+							<img src="./assets/img/cars/5.jpg" alt="Car branding" style="min-height:200px; background:#b0ccbe;" onerror="this.style.minHeight='220px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Vehicle Branding</div><div class="ow-caption">Saloon Car Wrap</div></div>
+						</div>
 
-							<!-- car branding -->
+						<div class="ow-item" data-cat="office" onclick="owLightbox(this)">
+							<img src="./assets/img/office/2.jpg" alt="Office signage" style="min-height:280px; background:#9ec4b2;" onerror="this.style.minHeight='300px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Office Branding</div><div class="ow-caption">Office Signage</div></div>
+						</div>
 
-							<div class="row">
-								<div class="col-md-4 col-md-offset-1" data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":"1200","delay":"120","easing":"easeOutQuint","direction":"forward","initValues":{"translateY":30,"opacity":0},"animations":{"translateY":0,"opacity":1}}'>
+						<div class="ow-item" data-cat="offset" onclick="owLightbox(this)">
+							<img src="./assets/img/offset/5.jpg" alt="Offset packaging" style="min-height:210px; background:#bcd6c9;" onerror="this.style.minHeight='230px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Offset Printing</div><div class="ow-caption">Product Packaging</div></div>
+						</div>
 
-									<header class="fancy-title">
-										<h5 class="font-size-12 text-uppercase ltr-sp-1 text-primary">Vehicle Branding</h5>
-										<i class="line w-5 circle border-color-primary"></i>
-									</header>
-		
-									<p class="font-size-18 lh-185">
-										We leverage the latest technology and high quality materials to transform a simple creative concept or branding idea into an artwork of uncompromising quality, ready to be applied to clients’ vehicles. 
-									</p>
+						<div class="ow-item" data-cat="digital" onclick="owLightbox(this)">
+							<img src="./assets/img/digital/7.jpg" alt="Fliers" style="min-height:170px; background:#cce2d8;" onerror="this.style.minHeight='190px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Digital Printing</div><div class="ow-caption">Tshirts</div></div>
+						</div>
 
-								</div><!-- /.col-md-5 col-md-offset-1 -->
+						<div class="ow-item" data-cat="vehicle" onclick="owLightbox(this)">
+							<img src="./assets/img/cars/8.jpg" alt="Van branding" style="min-height:230px; background:#a8c8b8;" onerror="this.style.minHeight='250px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Vehicle Branding</div><div class="ow-caption"> Van Wrap</div></div>
+						</div>
 
-								<div class="col-md-6 col-md-offset-1">
-									<section
-									style="height: 350px; width: 100%;"
-									class="p-5 bg-cover"
-									data-slideshow-bg="true"
-									data-slideshow-options='{"delay":2500,"imageArray":
-									["./assets/img/cars/2.jpg","./assets/img/cars/3.jpg","./assets/img/cars/4.jpg",
-									"./assets/img/cars/5.jpg","./assets/img/cars/6.jpg","./assets/img/cars/7.jpg",
-									"./assets/img/cars/8.jpg","./assets/img/cars/9.jpg","./assets/img/cars/10.jpg",
-									"./assets/img/cars/11.jpg","./assets/img/cars/12.jpg","./assets/img/cars/13.jpg",
-									"./assets/img/cars/14.jpg","./assets/img/cars/15.jpg","./assets/img/cars/16.jpg",
-									"./assets/img/cars/17.jpg","./assets/img/cars/.jpg"]}'>
-									<div class="container h-5">											
-									</div><!-- /.container -->
-								</section>
+						<div class="ow-item" data-cat="office" onclick="owLightbox(this)">
+							<img src="./assets/images/walls2.jpeg" alt="Wall mural" style="min-height:200px; background:#c6dfD5;" onerror="this.style.minHeight='220px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Office Branding</div><div class="ow-caption">Feature Wall Mural</div></div>
+						</div>
 
-								</div><!-- /.col-md-5 col-md-offset-1 -->
-							</div><!-- /.row -->
+						<div class="ow-item" data-cat="offset" onclick="owLightbox(this)">
+							<img src="./assets/img/offset/14.jpeg" alt="Annual reports" style="min-height:240px; background:#b4d2c4;" onerror="this.style.minHeight='260px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Offset Printing</div><div class="ow-caption">Wall Clocks</div></div>
+						</div>
 
-							<!-- /car branding -->
+						<div class="ow-item" data-cat="digital" onclick="owLightbox(this)">
+							<img src="./assets/img/digital/8.jpg" alt="Calendars" style="min-height:185px; background:#d4e8e0;" onerror="this.style.minHeight='200px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Digital Printing</div><div class="ow-caption">Corporate Stationery</div></div>
+						</div>
 
-							<!-- office branding -->
-							<div class="row">
+						<div class="ow-item" data-cat="vehicle" onclick="owLightbox(this)">
+							<img src="./assets/img/cars/12.jpg" alt="Bus branding" style="min-height:250px; background:#9cbfaf;" onerror="this.style.minHeight='270px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Vehicle Branding</div><div class="ow-caption">Vehicle Full Wrap</div></div>
+						</div>
 
-								<div class="col-md-6 col-md-offset-1 pt-lg-6 pb-lg-5">
-									<section
-									style="height: 350px; width: 100%;"
-									class="p-5 bg-cover"
-									data-slideshow-bg="true"
-									data-slideshow-options='{"delay":2500,"imageArray":
-									["./assets/img/office/1.jpg","./assets/img/office/2.jpg","./assets/img/office/11.jpg",
-									"./assets/img/office/3.jpg","./assets/img/office/12.png",
-									"./assets/img/office/9.png","./assets/img/office/10.jpg"]}'>
-									<div class="container h-5">											
-									</div><!-- /.container -->
-								</section>
+						<div class="ow-item" data-cat="office" onclick="owLightbox(this)">
+							<img src="./assets/images/wall1.jpeg" alt="Board room" style="min-height:200px; background:#b8d5c8;" onerror="this.style.minHeight='220px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Office Branding</div><div class="ow-caption">Wall Mural Branding</div></div>
+						</div>
 
-								</div><!-- /.col-md-5 col-md-offset-1 -->
+						<div class="ow-item" data-cat="offset" onclick="owLightbox(this)">
+							<img src="./assets/img/offset/15.jpeg" alt="Books" style="min-height:180px; background:#c0d9cc;" onerror="this.style.minHeight='200px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Offset Printing</div><div class="ow-caption">Lamp Branding</div></div>
+						</div>
 
-								<div class="col-md-4 col-md-offset-1 pt-lg-6 pb-lg-5" data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":"all-childs","duration":"1200","delay":"120","easing":"easeOutQuint","direction":"forward","initValues":{"translateY":30,"opacity":0},"animations":{"translateY":0,"opacity":1}}'>
+						<div class="ow-item" data-cat="digital" onclick="owLightbox(this)">
+							<img src="./assets/img/digital/12.jpg" alt="Christmas cards" style="min-height:220px; background:#d8eae3;" onerror="this.style.minHeight='240px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Digital Printing</div><div class="ow-caption">Corporate Stationery</div></div>
+						</div>
 
-									<header class="fancy-title">
-										<h5 class="font-size-12 text-uppercase ltr-sp-1 text-primary">Office Branding</h5>
-										<i class="line w-5 circle border-color-primary"></i>
-									</header>
-		
-									<p class="font-size-18 lh-185">
-										Over the years we have grown to become one of the most respected office-branding business in Kenya. We understand the value of displaying the right image and can work with you to maximise the benefit from your branding investment.
-									</p>
+						<div class="ow-item" data-cat="vehicle" onclick="owLightbox(this)">
+							<img src="./assets/img/cars/15.jpg" alt="Pickup wrap" style="min-height:210px; background:#a4c4b4;" onerror="this.style.minHeight='230px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Vehicle Branding</div><div class="ow-caption">Vehicle Wrap</div></div>
+						</div>
 
-								</div><!-- /.col-md-5 col-md-offset-1 -->
+						<div class="ow-item" data-cat="digital" onclick="owLightbox(this)">
+							<img src="./assets/img/digital/13.jpg" alt="Menus" style="min-height:190px; background:#cce4da;" onerror="this.style.minHeight='210px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Digital Printing</div><div class="ow-caption">Restaurant Menus</div></div>
+						</div>
 
-								
-							</div><!-- /.row -->
-							<!-- /office branding -->
+						<div class="ow-item" data-cat="office" onclick="owLightbox(this)">
+							<img src="./assets/img/office/10.jpg" alt="Office graphics" style="min-height:230px; background:#aacfbe;" onerror="this.style.minHeight='250px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Office Branding</div><div class="ow-caption">Branded Mugs</div></div>
+						</div>
 
-						</div><!-- /.lqd-column col-lg-6 -->						
+						<div class="ow-item" data-cat="offset" onclick="owLightbox(this)">
+							<img src="./assets/img/offset/16.jpeg" alt="Offset stationery" style="min-height:190px; background:#c8ddd2;" onerror="this.style.minHeight='210px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Offset Printing</div><div class="ow-caption">Corporate Stationery</div></div>
+						</div>
 
-						<div class="lqd-column col-lg-6 col-xs-12 visible-lg px-0 bg-cover" data-parallax="true" data-parallax-options='{"parallaxBG": true}' style="background-image: url(assets/demo/bg/bg-74.jpg);">
-						</div><!-- /.lqd-column col-lg-6 px-0 -->
+						<div class="ow-item" data-cat="vehicle" onclick="owLightbox(this)">
+							<img src="./assets/img/cars/17.jpg" alt="Vehicle decals" style="min-height:200px; background:#b2ccbf;" onerror="this.style.minHeight='220px'">
+							<div class="ow-item-overlay"><div class="ow-tag">Vehicle Branding</div><div class="ow-caption">Partial Decal Wrap</div></div>
+						</div>
 
-					</div><!-- /.row mx-0 -->
-				</div><!-- /.container-fluid px-0 -->
+						<!-- Branded Merchandise -->
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/bottles1.jpeg" alt="Branded steel bottles" style="min-height:200px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">Branded Steel Water Bottles</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/bottles2.jpeg" alt="Branded sports bottles" style="min-height:200px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">Branded Sports Bottles</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/caps1.jpeg" alt="Powercom branded hard hats" style="min-height:240px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">Powercom Ltd Branded Hard Hats</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/hats1.jpeg" alt="Branded navy visors" style="min-height:260px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">Branded Embroidered Visors</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/hats2.jpeg" alt="Leopard Orchid Safaris bush hats" style="min-height:220px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">Leopard Orchid Safaris Bush Hats</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/hats3.jpeg" alt="KeNHA JICA branded caps" style="min-height:210px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">KeNHA / JICA Branded Caps</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/hats4.jpeg" alt="BaoWifi branded bucket hats" style="min-height:220px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">BaoWifi Branded Bucket Hats</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/jackets1.jpeg" alt="ChildFund Kenya branded jackets" style="min-height:260px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">ChildFund Kenya Branded Jackets</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/keyholder1.jpeg" alt="Luton Hospital branded keyholders" style="min-height:230px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">Luton Hospital Branded Keyholders</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/mugs1.jpeg" alt="Branded travel mugs" style="min-height:200px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">Corporate Values Travel Mugs</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/mugs2.jpeg" alt="Black Stars branded paper cups" style="min-height:200px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">Black Stars Branded Paper Cups</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/mugs3.jpeg" alt="Custom printed mugs" style="min-height:240px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">Custom Printed Mugs</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/mugs4.jpeg" alt="Personalised travel tumblers" style="min-height:230px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">Personalised Travel Tumblers</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/mugs5.jpeg" alt="Langoni Hospital branded mugs" style="min-height:210px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">Langoni Hospital Branded Mugs</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/tshirts1.jpeg" alt="Kenya Green Building Society t-shirts" style="min-height:230px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">Kenya Green Building Society T-shirts</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/tshirts2.jpeg" alt="Home of Stars football jerseys" style="min-height:210px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">Home of Stars Football Jerseys</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/bags2.jpeg" alt="KTDA branded paper bags" style="min-height:230px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">KTDA Branded Paper Bags</div></div>
+						</div>
+
+						<div class="ow-item" data-cat="merch" onclick="owLightbox(this)">
+							<img src="./assets/images/bags1.jpeg" alt="Dr Scent branded bags" style="min-height:210px;">
+							<div class="ow-item-overlay"><div class="ow-tag">Branded Merchandise</div><div class="ow-caption">Dr Scent Branded Bags</div></div>
+						</div>
+
+					</div><!-- /.ow-grid -->
+
+				</div><!-- /.container -->
 			</section>
-					
-			<section  class="vc_row pt-65 pb-65" id="services">
+
+			<!-- ── MISSION / VISION (original) ── -->	
+			<section class="vc_row pt-65 pb-65" id="services">
 				<div class="container">
 					<div class="row" data-custom-animations="true" data-ca-options='{"triggerHandler":"inview","animationTarget":".lqd-column","duration":"1200","delay":"120","easing":"easeOutQuint","direction":"forward","initValues":{"translateX":30,"opacity":0},"animations":{"translateX":0,"opacity":1}}'>
 		
 						<div class="lqd-column col-md-6 col-sm-6">
-	
 							<div class="iconbox iconbox-heading-xs iconbox-xl">
-
 								<div class="iconbox-icon-wrap">
 									<span class="iconbox-icon-container mb-30">
 										<i class="icon-ecommerce_bag_plus"></i>
 									</span>
-								</div><!-- /.iconbox-icon-wrap -->
-
+								</div>
 								<div class="contents">
 									<h3 class="mb-15">Our Mission</h3>
 									<p>To exceed our clients expectations in every job/project with superior
 										quality, service and value. We believe in giving individual attention to
 										each of our client with professionalism and building a solid and lasting
 										relationship based on trust and satisfaction.</p>
-								</div><!-- /.contents -->
-								
-							</div><!-- /.iconbox -->
-	
-						</div><!-- /.lqd-column col-md-3 -->
-	
+								</div>
+							</div>
+						</div>
+		
 						<div class="lqd-column col-md-6 col-sm-6">
-	
 							<div class="iconbox iconbox-heading-xs iconbox-xl">
-
 								<div class="iconbox-icon-wrap">
 									<span class="iconbox-icon-container mb-30">
 										<i class="icon-basic_paperplane"></i>
 									</span>
-								</div><!-- /.iconbox-icon-wrap -->
-
+								</div>
 								<div class="contents">
 									<h3 class="mb-15">Our Vision</h3>
 									<p>To provide exceptional services and be the preferred choice not
 										only in the printing and branding industry but across all industries.
 										We aim at bringing outstanding results that count in everything
 										that we do.</p>
-								</div><!-- /.contents -->
-								
-							</div><!-- /.iconbox -->
-	
-						</div><!-- /.lqd-column col-md-3 -->
-	
-	
-					</div><!-- /.row -->
-				</div><!-- /.container -->
+								</div>
+							</div>
+						</div>
+		
+					</div>
+				</div>
 			</section>
 
-
-
-            <section>
+			<!-- ── BASE IMAGE (original) ── -->
+			<section>
 				<img src="assets/img/base.png">
 			</section>
 
+
+			<!-- ═══════════════════════════════════════════════ -->
+
+			<!-- ── CTA BANNER (original) ── -->
 			<section class="vc_row pt-45 pb-45 bg-primary">
 				<div class="container">
 					<div class="row d-flex flex-wrap align-items-center">
 
 						<div class="lqd-column col-md-9 col-xs-12">
-
 							<h3 class="mt-0 mb-md-0 font-size-22 text-white">A digital marketing company that produces custom-built brands.</h3>
-
-						</div><!-- /.lqd-column col-md-9 -->
+						</div>
 
 						<div class="lqd-column col-md-3 col-xs-12 text-md-right">
-
 							<a href="contact.html" class="btn btn-solid circle font-size-12 font-weight-bold ltr-sp-2 text-uppercase px-2 btn-white">
 								<span>
 									<span class="btn-txt">Speak to Us today</span>
-									<span class="btn-icon">
-										<i class="fa fa-angle-right"></i>
-									</span>
+									<span class="btn-icon"><i class="fa fa-angle-right"></i></span>
 								</span>
 							</a>
+						</div>
 
-						</div><!-- /.lqd-column col-md-3 text-md-right -->
-
-					</div><!-- /.row -->
-				</div><!-- /.container -->
+					</div>
+				</div>
 			</section>
 
-			
-		</main><!-- /#content.content -->
+		</main>
 		
 		<footer class="main-footer" data-sticky-footer="true">
 		
@@ -450,71 +684,101 @@
 					<div class="row d-flex flex-wrap">
 	
 						<div class="lqd-column col-md-4 col-sm-6">
-	
 							<figure class="mb-4">
 								<h5 class="text-white">Top-notch Shades Solutions Limited.</h5>
-								<!-- <img src="assets/img/logo/logo-removebg" alt="Virtus"> -->
 							</figure>
 							<p>We help our clients succeed by creating brand identities, digital experiences, and print materials.</p>
-
 							<ul class="social-icon social-icon-lg">
 								<li><a href="https://www.facebook.com/pages/category/Product-Service/Top-Notch-Shades-Solutions-Ltd-2219024035046666/" target="_blank"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
 								<li><a href="#" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
 							</ul>
-	
-						</div><!-- /.col-md-3 -->
+						</div>
 	
 						<div class="lqd-column col-md-4 col-sm-6">
-	
 							<h3 class="widget-title mb-30 text-white font-size-15 text-uppercase ltr-sp-2">Useful Links</h3>
 							<ul class="lqd-custom-menu reset-ul font-size-14 lh-2">
 								<li class="mb-1"><a href="index.html">Home</a></li>
 								<li class="mb-1"><a href="about.html">About</a></li>
 								<li class="mb-1"><a href="services.html">Services</a></li>
 							</ul>
-	
-						</div><!-- /.col-md-3 -->
+						</div>
 	
 						<div class="lqd-column col-md-4 col-sm-6">
-	
 							<h3 class="widget-title mb-30 text-white font-size-15 text-uppercase ltr-sp-2">Contact Us</h3>
 							<p>
 								Keekorok Road, <br>
 								Tawfeeq Building, First Floor, Room 2, <br>
 								<b>Tel</b> : 0729 152 119 / 0723 555 804 <br>
-								<b>Email</b> : topnotchshades@gmail.com <br>
-								<br>
-								</p>
+								<b>Email</b> : topnotchshades@gmail.com/ info@topnotchshades.co.ke <br>
+							</p>
+						</div>
 	
-						</div><!-- /.col-md-3 -->
-	
-					
-	
-					</div><!-- /.row -->
-				</div><!-- /.container -->
+					</div>
+				</div>
 			</section>
 	
 			<section class="pt-35 pb-35 mt-70">
 				<div class="container bt-fade-white-01 pt-35 pb-0">
 					<div class="row">
-		
-												<div class="lqd-column col-md-12 text-md-center">
-
-					<p class="my-0 font-size-15 text-fade-white-08">© Top-notch Shades Solutions, <span id="copyright"></span>. </p>
-												</div><!-- /.col-md-6 text-md-right -->
-		
-					</div><!-- /.row -->
-				</div><!-- /.container -->
+						<div class="lqd-column col-md-12 text-md-center">
+							<p class="my-0 font-size-15 text-fade-white-08">© Top-notch Shades Solutions, <span id="copyright"></span>.</p>
+						</div>
+					</div>
+				</div>
 			</section>
 			
-		</footer><!-- /.main-footer -->
+		</footer>
 		
 	</div><!-- /#wrap -->
 
+	<!-- ── OUR WORK LIGHTBOX ── -->
+	<div id="ow-lightbox" onclick="owCloseLightbox(event)">
+		<button id="ow-lb-close" onclick="owCloseLightbox()">&#x2715;</button>
+		<img id="ow-lb-img" src="" alt="">
+		<div id="ow-lb-info"></div>
+	</div>
+
 	<script>
 		document.getElementById("copyright").innerHTML = new Date().getFullYear();
+
+		/* ── Portfolio filter ── */
+		function owFilter(cat, btn) {
+			document.querySelectorAll('.ow-filter-btn').forEach(function(b) {
+				b.classList.remove('active');
+			});
+			btn.classList.add('active');
+			document.querySelectorAll('.ow-item').forEach(function(item) {
+				item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'block' : 'none';
+			});
+		}
+
+		/* ── Lightbox ── */
+		function owLightbox(el) {
+			var img  = el.querySelector('img');
+			var tag  = el.querySelector('.ow-tag')  ? el.querySelector('.ow-tag').textContent  : '';
+			var cap  = el.querySelector('.ow-caption') ? el.querySelector('.ow-caption').textContent : '';
+			document.getElementById('ow-lb-img').src = img.src;
+			document.getElementById('ow-lb-img').alt = cap;
+			document.getElementById('ow-lb-info').textContent = tag + (cap ? ' — ' + cap : '');
+			document.getElementById('ow-lightbox').classList.add('open');
+			document.body.style.overflow = 'hidden';
+		}
+
+		function owCloseLightbox(e) {
+			var lb = document.getElementById('ow-lightbox');
+			var cl = document.getElementById('ow-lb-close');
+			if (!e || e.target === lb || e.target === cl) {
+				lb.classList.remove('open');
+				document.body.style.overflow = '';
+			}
+		}
+
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape') owCloseLightbox({ target: document.getElementById('ow-lightbox') });
+		});
 	</script>
+
 	<script src="assets/vendors/jquery.min.js"></script>
 	<script src="assets/js/theme-vendors.js"></script>
 	<script src="assets/js/theme.min.js"></script>
